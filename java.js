@@ -64,6 +64,18 @@ function initRiwayat() {
 
             tbody.appendChild(tr);
         });
+
+        document.querySelectorAll(".hapus").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const id = Number(this.dataset.id);
+
+                let data = getData();
+                data = data.filter(item => item.id !== id);
+
+                saveData(data);
+                renderTable();
+            });
+        });
     }
 }
 
@@ -72,4 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("formReservasi")) {
         initForm();
     }
+
+    if (document.getElementById("dataTable")) {
+        initRiwayat();
+    }
+
 });
